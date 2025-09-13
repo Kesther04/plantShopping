@@ -10,7 +10,6 @@ function ProductList({ onHomeClick }) {
     const [addedToCart,setAddedToCart] = useState({});
     let CartItems = useSelector((state) => state.cart.items);
     let dispatch = useDispatch();
-    // const CartItems = dispatch(addItem(product));
 
     const plantsArray = [
         {
@@ -323,8 +322,9 @@ function ProductList({ onHomeClick }) {
                         <button
                             className="product-button"
                             onClick={() => handleAddToCart(plant)} // Handle adding plant to cart
+                            disabled={addedToCart[plant.name]} // Disable button if plant is already added
                         >
-                            Add to Cart
+                            {addedToCart[plant.name] ? 'Added to Cart' : 'Add to Cart'}
                         </button>
                         </div>
                     ))}
